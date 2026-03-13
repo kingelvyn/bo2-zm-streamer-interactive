@@ -35,6 +35,6 @@ streamer_mod_debug_announce()
     players = getentarray( "player", "classname" );
     for ( i = 0; i < players.size; i++ )
     {
-        players[i] iprintlnbold( "Streamer Mod v000000.1 by 11 loaded! test" );
+        players[i] iprintlnbold( "^6Streamer Mod v00.11 by ^511 ^0loaded! test" );
     }
 }

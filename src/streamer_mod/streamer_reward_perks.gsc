@@ -1,33 +1,41 @@
+#include scripts\zm\streamer_mod\streamer_debug;
+
 // RANDOM PERK ---------------------------------------------------------------
 
 streamer_reward_random_perk( player, _ )
 {
-    if ( !isDefined( level.streamer_perk_pool ) )
-        level.streamer_perk_pool = [];
+    availablePerks = [];
 
-    if ( !level.streamer_perk_pool.size )
+    if ( !isDefined( player ) )
         return false;
 
-    attempts = level.streamer_perk_pool.size;
-    while ( attempts > 0 )
+    if ( !isDefined( level.streamer_perk_pool ) || !level.streamer_perk_pool.size )
+        return false;
+
+    for ( i = 0; i < level.streamer_perk_pool.size; i++ )
     {
-        idx = randomint( level.streamer_perk_pool.size );
-        perkName = level.streamer_perk_pool[idx];
+        perkName = level.streamer_perk_pool[i];
 
         if ( !streamer_player_has_perk( player, perkName ) )
-        {
-            streamer_player_set_perk( player, perkName );
-
-            // Validate it applied; if not, reroll
-            if ( streamer_player_has_perk( player, perkName ) )
-                return true;
-            return false;
-        }
-
-        attempts--;
+            availablePerks[availablePerks.size] = perkName;
     }
 
-    // All perks in pool already owned -> invalid, reroll
+    if ( !availablePerks.size )
+        return false;
+
+    idx = randomint( availablePerks.size );
+    perkName = availablePerks[idx];
+
+    streamer_player_set_perk( player, perkName );
+    streamer_debug_print( "Perk rolled: " + perkName );
+
+    if ( streamer_wait_for_perk_apply( player, perkName, 0.25 ) )
+    {
+        streamer_debug_print( "Perk applied: " + perkName );
+        return true;
+    }
+
+    streamer_debug_print( "FAILED perk: " + perkName );
     return false;
 }
 
@@ -40,33 +48,26 @@ streamer_reward_all_perks( player, _ )
     if ( !isDefined( player ) )
         return false;
 
-    if ( !isDefined( level.streamer_perk_pool ) )
+    if ( !isDefined( level.streamer_perk_pool ) || !level.streamer_perk_pool.size )
     {
-        level.streamer_perk_pool = [];
-
-        // Core BO2 zombies perks. This list is safe on most maps.
-        level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_armorvest";     // Juggernog
-        level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_quickrevive";   // Quick Revive
-        level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_fastreload";    // Speed Cola
-        level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_rof";           // Double Tap
-        level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_extraammo";     // Mule Kick
-        level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_longersprint";  // Stamin-Up
-    }
-
-    if ( !level.streamer_perk_pool.size )
+        streamer_debug_print( "No perk pool initialized." );
         return false;
+    }
 
     for ( i = 0; i < level.streamer_perk_pool.size; i++ )
     {
         perkName = level.streamer_perk_pool[i];
 
-        if ( !streamer_player_has_perk( player, perkName ) )
-        {
-            streamer_player_set_perk( player, perkName );
+        if ( streamer_player_has_perk( player, perkName ) )
+            continue;
 
-            if ( streamer_player_has_perk( player, perkName ) )
-                grantedAny = true;
-        }
+        streamer_player_set_perk( player, perkName );
+        streamer_debug_print( "Perk received: " + perkName );
+
+        if ( streamer_wait_for_perk_apply( player, perkName, 0.25 ) )
+            grantedAny = true;
+        else
+            streamer_debug_print( "FAILED perk: " + perkName );
     }
 
     return grantedAny;
@@ -76,11 +77,33 @@ streamer_reward_all_perks( player, _ )
 
 streamer_player_has_perk( player, perkName )
 {
-    return player hasPerk( perkName );
+    if ( player hasPerk( perkName ) )
+        return true;
+
+    return false;
 }
 
 streamer_player_set_perk( player, perkName )
 {
-    // Use the stock BO2 zombies perk granting function.
-    player maps\mp\zombies\_zm_perks::give_perk( perkName );
+    if ( streamer_player_has_perk( player, perkName ) )
+        return;
+
+    player maps\mp\zombies\_zm_perks::wait_give_perk( perkName, 1 );
+}
+
+streamer_wait_for_perk_apply( player, perkName, timeout )
+{
+    elapsed = 0;
+    interval = 0.05;
+
+    while ( elapsed < timeout )
+    {
+        if ( streamer_player_has_perk( player, perkName ) )
+            return true;
+
+        wait interval;
+        elapsed += interval;
+    }
+
+    return false;
 }

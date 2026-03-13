@@ -25,7 +25,7 @@ streamer_init_weapon_pool_buried()
     streamer_add_weapon_to_pool( "lsat_zm" );        // LSAT
 
     // -----------------------------------------------------------------------
-    // Mystery Box weapons that fit your current random gun logic
+    // Mystery Box weapons
     // -----------------------------------------------------------------------
     streamer_add_weapon_to_pool( "knife_ballistic_zm" ); // Ballistic Knife
     streamer_add_weapon_to_pool( "barretm82_zm" );       // Barrett M82A1
@@ -47,20 +47,21 @@ streamer_init_weapon_pool_buried()
     streamer_add_weapon_to_pool( "ray_gun_zm" );         // Ray Gun
     streamer_add_weapon_to_pool( "raygun_mark2_zm" );    // Ray Gun Mark II
     streamer_add_weapon_to_pool( "slowgun_zm" );         // Paralyzer
-    streamer_add_weapon_to_pool( "time_bomb" );          // Time Bomb
-    streamer_add_weapon_to_pool( "cymbal_monkey" );      // Monkey Bombs
-    streamer_add_weapon_to_pool( "remingtonnewarmy_zm" );// Remington New Army
+    //streamer_add_weapon_to_pool( "time_bomb_zm" );          // Time Bomb - need logic update
+    //streamer_add_weapon_to_pool( "cymbal_monkey_zm" );      // Monkey Bombs - need logic update
+    //streamer_add_weapon_to_pool( "remingtonnewarmy_zm" );// Remington New Army - failed, need to verify
 }
 
 streamer_init_perk_pool_buried()
 {
     level.streamer_perk_pool = [];
 
-    streamer_add_perk_to_pool( "specialty_armorvest" );     // Juggernog
-    streamer_add_perk_to_pool( "specialty_quickrevive" );   // Quick Revive
-    streamer_add_perk_to_pool( "specialty_fastreload" );    // Speed Cola
-    streamer_add_perk_to_pool( "specialty_rof" );           // Double Tap
-    streamer_add_perk_to_pool( "specialty_longersprint" );  // Stamin-Up
-    streamer_add_perk_to_pool( "specialty_extraammo" );     // Mule Kick
-    streamer_add_perk_to_pool( "specialty_vultureaid" );    // Vulture aid
+    streamer_add_perk_to_pool( "specialty_armorvest" );         // Juggernog
+    streamer_add_perk_to_pool( "specialty_quickrevive" );       // Quick Revive
+    streamer_add_perk_to_pool( "specialty_fastreload" );        // Speed Cola
+    streamer_add_perk_to_pool( "specialty_rof" );               // Double Tap
+    streamer_add_perk_to_pool( "specialty_longersprint" );          // Stamin-Up
+    streamer_add_perk_to_pool( "specialty_mulekick" );          // Mule Kick
+    streamer_add_perk_to_pool( "specialty_nomotionsensor" );    // Vulture aid
+    streamer_add_perk_to_pool( "specialty_phdflopper" );        // PHD Flopper
 }

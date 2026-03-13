@@ -107,5 +107,3 @@ streamer_count_reward_pool_weapons( player )
 
     return count;
 }
-
-

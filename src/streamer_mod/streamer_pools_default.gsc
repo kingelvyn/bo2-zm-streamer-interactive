@@ -44,6 +44,6 @@ streamer_init_perk_pool_default()
     level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_quickrevive";   // Quick Revive
     level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_fastreload";    // Speed Cola
     level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_rof";           // Double Tap
-    level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_extraammo";     // Mule Kick
+    level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_mulekick";     // Mule Kick
     level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_longersprint";  // Stamin-Up
 }

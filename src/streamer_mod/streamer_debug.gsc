@@ -1,5 +1,5 @@
 streamer_debug_print( msg )
 {
     if ( isDefined( level.streamer_debug ) && level.streamer_debug )
-        iprintln( "[11 MOD] " + msg );
+        iprintln( "^2[11 MOD] ^5" + msg );
 }

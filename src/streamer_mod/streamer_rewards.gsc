@@ -19,7 +19,7 @@ streamer_setup_rewards()
     level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_large",   1, "streamer_reward_points", 5000 );
 
     // Random weapon (box-style)
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_weapon",  100, "streamer_reward_random_weapon", 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_weapon",  1, "streamer_reward_random_weapon", 0 );
 
     // Random perk
     level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_perk",     1, "streamer_reward_random_perk", 0 );
@@ -30,7 +30,7 @@ streamer_setup_rewards()
     level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "firesale",        1, "streamer_reward_powerup", "fire_sale" );
 
     // Receive all perks 
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "all_perks",       1, "streamer_reward_all_perks", 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "all_perks",       80, "streamer_reward_all_perks", 0 );
 }
 
 streamer_make_reward( ref, weight, funcName, data )
@@ -69,7 +69,7 @@ streamer_do_spin()
         if ( success )
         {
             // Notification text
-            self iprintlnbold( "Reward: " + reward.ref );
+            self iprintlnbold( "^2Reward: ^5" + reward.ref );
             self.streamer_spin_in_progress = false;
             return;
         }
