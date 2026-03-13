@@ -84,7 +84,7 @@ streamer_reward_random_weapon( player, _ )
     if ( player hasWeapon( current ) )
         player switchToWeapon( current );
 
-    iprintln( "Rolled weapon failed: " + weap );
+    streamer_debug_print( "Rolled weapon failed: " + weap );
     return false;
 }
 
@@ -106,4 +106,19 @@ streamer_count_reward_pool_weapons( player )
     }
 
     return count;
+}
+
+streamer_reward_weapon_dispatch( player, reward )
+{
+    if ( !isDefined( reward ) )
+        return false;
+
+    switch ( reward.ref )
+    {
+        case "random_weapon":
+            return streamer_reward_random_weapon( player, reward.data );
+
+        default:
+            return false;
+    }
 }

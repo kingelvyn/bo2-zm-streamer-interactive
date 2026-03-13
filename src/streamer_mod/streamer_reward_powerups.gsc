@@ -1,4 +1,6 @@
-// POWERUPS (MAX AMMO / INSTA KILL / FIRE SALE) ------------------------------
+#include scripts\zm\streamer_mod\streamer_debug;
+
+// POWERUPS (MAX AMMO / INSTA KILL / FIRE SALE....) ------------------------------
 
 streamer_reward_powerup( player, powerupType )
 {
@@ -6,7 +8,10 @@ streamer_reward_powerup( player, powerupType )
         return false;
 
     if ( !isDefined( powerupType ) )
+    {
+        streamer_debug_print ( "Powerup failed: Type undefined" );
         return false;
+    }
 
     forward = anglesToForward ( player.angles );
     org = player.origin + ( forward * 30 );
@@ -19,8 +24,10 @@ streamer_reward_powerup( player, powerupType )
     origin = trace["position"];
     origin[2] = origin[2] + 4;
 
+    streamer_debug_print ( "Power up rolled: " + powerupType );
+
     // Names: full_ammo (max ammo), insta_kill, fire_sale, double_points, nuke, carpenter, etc.
-    level.powerup_drop_count = 0;
+    //level.powerup_drop_count = 0;
 
     switch ( powerupType )
     {
@@ -33,7 +40,18 @@ streamer_reward_powerup( player, powerupType )
         case "fire_sale":
             powerup = level maps\mp\zombies\_zm_powerups::specific_powerup_drop( "fire_sale", origin );
             break;
+        case "nuke":
+            powerup = level maps\mp\zombies\_zm_powerups::specific_powerup_drop( "nuke", origin );
+            break;
+        case "carpenter":
+            powerup = level maps\mp\zombies\_zm_powerups::specific_powerup_drop( "carpenter", origin );
+            break;
+        case "double_points":
+            powerup = level maps\mp\zombies\_zm_powerups::specific_powerup_drop( "double_points", origin );
+            break;
+
         default:
+            streamer_debug_print ( "Power up rolled: " + powerupType );
             return false;
     }
 

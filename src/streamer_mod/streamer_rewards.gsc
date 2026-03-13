@@ -1,3 +1,4 @@
+#include scripts\zm\streamer_mod\streamer_debug;
 #include scripts\zm\streamer_mod\streamer_reward_points;
 #include scripts\zm\streamer_mod\streamer_reward_weapons;
 #include scripts\zm\streamer_mod\streamer_reward_perks;
@@ -15,31 +16,35 @@ streamer_setup_rewards()
     level.streamer_rewards = [];
 
     // Points rewards
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_small",   1, "streamer_reward_points", 1000 );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_large",   1, "streamer_reward_points", 5000 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_small", "+1000 Points", "points",   1, 1000 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_large", "+5000 Points", "points",   1, 5000 );
 
     // Random weapon (box-style)
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_weapon",  1, "streamer_reward_random_weapon", 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_weapon", "Random Weapon", "weapon", 1, 0 );
 
     // Random perk
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_perk",     1, "streamer_reward_random_perk", 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_perk", "Random Perk", "perk",       1, 0 );
 
     // Powerup-style rewards
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "max_ammo",        1, "streamer_reward_powerup", "ammo" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "insta_kill",      1, "streamer_reward_powerup", "insta_kill" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "firesale",        1, "streamer_reward_powerup", "fire_sale" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "max_ammo", "Max Ammo", "powerup",          40, "ammo" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "insta_kill", "Insta-Kill", "powerup",      40, "insta_kill" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "firesale", "🔥SALE", "powerup",            40, "fire_sale" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "nuke", "Nuke", "powerup",                  40, "nuke" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "carpenter", "Carpenter", "powerup",        40, "carpenter" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "double_points", "2X Points", "powerup",    40, "double_points" );
 
     // Receive all perks 
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "all_perks",       80, "streamer_reward_all_perks", 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "all_perks", "All Perks", "perk",           1, 0 );
 }
 
-streamer_make_reward( ref, weight, funcName, data )
+streamer_make_reward( ref, displayName, type, weight, data )
 {
     reward             = spawnstruct();
     reward.ref         = ref;
+    reward.displayName = displayName; 
+    reward.type        = type;              // string of category of reward     
     reward.weight      = weight;
-    reward.funcName    = funcName; // string name of function to call
-    reward.data        = data;     // value / extra data
+    reward.data        = data;              // value / extra data
     return reward;
 }
 
@@ -69,7 +74,7 @@ streamer_do_spin()
         if ( success )
         {
             // Notification text
-            self iprintlnbold( "^2Reward: ^5" + reward.ref );
+            self iprintlnbold( "^2Reward: ^5" + reward.displayName );
             self.streamer_spin_in_progress = false;
             return;
         }
@@ -78,7 +83,7 @@ streamer_do_spin()
     // Fallback if selected reward failed or no valid reward
     // Give small points so the spin is never totally wasted
     streamer_reward_points( self, 1000 );
-    self iprintlnbold( "Fallback reward: 1000 points" );
+    self iprintlnbold( "^2Fallback reward: ^51000 points" );
 
     self.streamer_spin_in_progress = false;
 }
@@ -117,25 +122,23 @@ streamer_apply_reward( player, reward )
         return false;
 
     // Dispatch explicitly so we avoid any issues with dynamic function calls.
-    switch ( reward.ref )
+    switch ( reward.type )
     {
-        case "points_small":
-        case "points_large":
+        case "points":
+            streamer_debug_print ("Points: " + reward.data);
             return streamer_reward_points( player, reward.data );
 
-        case "random_weapon":
-            return streamer_reward_random_weapon( player, reward.data );
+        case "weapon":
+            streamer_debug_print ("Weapon: " + reward.data);
+            return streamer_reward_weapon_dispatch( player, reward );
 
-        case "random_perk":
-            return streamer_reward_random_perk( player, reward.data );
+        case "perk":
+            streamer_debug_print ("Perk: " + reward.data);
+            return streamer_reward_perk_dispatch( player, reward );
 
-        case "max_ammo":
-        case "insta_kill":
-        case "firesale":
+        case "powerup":
+            //streamer_debug_print ("Powerup: " + reward.data);
             return streamer_reward_powerup( player, reward.data );
-
-        case "all_perks":
-            return streamer_reward_all_perks( player, reward.data );
 
         default:
             return false;

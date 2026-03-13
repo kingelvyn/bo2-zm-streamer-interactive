@@ -107,3 +107,21 @@ streamer_wait_for_perk_apply( player, perkName, timeout )
 
     return false;
 }
+
+streamer_reward_perk_dispatch( player, reward )
+{
+    if ( !isDefined( reward ) )
+        return false;
+
+    switch ( reward.ref )
+    {
+        case "random_perk":
+            return streamer_reward_random_perk( player, reward.data );
+
+        case "all_perks":
+            return streamer_reward_all_perks( player, reward.data );
+
+        default:
+            return false;
+    }
+}
