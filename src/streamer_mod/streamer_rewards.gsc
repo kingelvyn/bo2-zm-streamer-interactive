@@ -15,22 +15,22 @@ streamer_setup_rewards()
     level.streamer_rewards = [];
 
     // Points rewards
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_small",   15, "streamer_reward_points", 1000 );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_large",   15, "streamer_reward_points", 5000 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_small",   1, "streamer_reward_points", 1000 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_large",   1, "streamer_reward_points", 5000 );
 
     // Random weapon (box-style)
     level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_weapon",  100, "streamer_reward_random_weapon", 0 );
 
     // Random perk
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_perk",    15, "streamer_reward_random_perk", 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_perk",     1, "streamer_reward_random_perk", 0 );
 
     // Powerup-style rewards
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "max_ammo",        5, "streamer_reward_powerup", "ammo" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "insta_kill",      5, "streamer_reward_powerup", "insta_kill" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "firesale",        5, "streamer_reward_powerup", "fire_sale" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "max_ammo",        1, "streamer_reward_powerup", "ammo" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "insta_kill",      1, "streamer_reward_powerup", "insta_kill" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "firesale",        1, "streamer_reward_powerup", "fire_sale" );
 
     // Receive all perks 
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "all_perks",       2, "streamer_reward_all_perks", 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "all_perks",       1, "streamer_reward_all_perks", 0 );
 }
 
 streamer_make_reward( ref, weight, funcName, data )

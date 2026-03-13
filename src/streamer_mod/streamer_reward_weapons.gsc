@@ -1,3 +1,5 @@
+#include scripts\zm\streamer_mod\streamer_debug;
+
 // RANDOM WEAPON -------------------------------------------------------------
 
 streamer_reward_random_weapon( player, _ )
@@ -41,7 +43,7 @@ streamer_reward_random_weapon( player, _ )
             return false;
 
         player switchToWeapon( weap );
-        iprintln( "Rolled weapon success: " + weap );
+        streamer_debug_print( "Rolled weapon success: " + weap );
         return true;
     }
 
@@ -72,7 +74,7 @@ streamer_reward_random_weapon( player, _ )
     if ( player hasWeapon( weap ) )
     {
         player switchToWeapon( weap );
-        iprintln( "Rolled weapon success: " + weap );
+        streamer_debug_print( "Rolled weapon success: " + weap );
         return true;
     }
 
