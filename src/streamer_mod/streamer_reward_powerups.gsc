@@ -27,7 +27,6 @@ streamer_reward_powerup( player, powerupType )
     streamer_debug_print ( "Power up rolled: " + powerupType );
 
     // Names: full_ammo (max ammo), insta_kill, fire_sale, double_points, nuke, carpenter, etc.
-    //level.powerup_drop_count = 0;
 
     switch ( powerupType )
     {
@@ -57,7 +56,6 @@ streamer_reward_powerup( player, powerupType )
 
     if ( isDefined( powerup ) )
     {
-        powerup thread maps\mp\zombies\_zm_powerups::powerup_timeout();
         return true;
     }
 
