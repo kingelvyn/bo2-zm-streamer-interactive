@@ -61,5 +61,5 @@ streamer_init_perk_pool_tranzit()
     streamer_add_perk_to_pool( "specialty_fastreload" );        // Speed Cola
     streamer_add_perk_to_pool( "specialty_rof" );               // Double Tap II
     streamer_add_perk_to_pool( "specialty_longersprint" );      // Stamin-Up
-    streamer_add_perk_to_pool( "specialty_tombstone" );         // Tombstone
+    streamer_add_perk_to_pool( "specialty_scavenger" );         // Tombstone
 }

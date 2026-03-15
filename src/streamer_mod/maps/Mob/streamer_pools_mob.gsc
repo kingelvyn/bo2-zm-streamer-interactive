@@ -46,9 +46,10 @@ streamer_init_perk_pool_mob()
 {
     level.streamer_perk_pool = [];
 
-    streamer_add_perk_to_pool( "specialty_armorvest" );         // Juggernog
-    streamer_add_perk_to_pool( "specialty_fastreload" );        // Speed Cola
-    streamer_add_perk_to_pool( "specialty_rof" );               // Double Tap II
-    streamer_add_perk_to_pool( "specialty_deadshot" );          // Deadshot Daiquiri
-    streamer_add_perk_to_pool( "specialty_cherry" );  // Electric Cherry
+    streamer_add_perk_to_pool( "specialty_armorvest" );             // Juggernog
+    streamer_add_perk_to_pool( "specialty_fastreload" );            // Speed Cola
+    streamer_add_perk_to_pool( "specialty_rof" );                   // Double Tap II
+    streamer_add_perk_to_pool( "specialty_quickrevive" );           // Quick Revive
+    streamer_add_perk_to_pool( "specialty_ads_zombies" );           // Deadshot Daiquiri
+    streamer_add_perk_to_pool( "specialty_grenadepulldeath" );      // Electric Cherry
 }

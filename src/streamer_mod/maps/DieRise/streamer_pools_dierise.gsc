@@ -60,6 +60,5 @@ streamer_init_perk_pool_die_rise()
     streamer_add_perk_to_pool( "specialty_fastreload" );        // Speed Cola
     streamer_add_perk_to_pool( "specialty_rof" );               // Double Tap II
     streamer_add_perk_to_pool( "specialty_additionalprimaryweapon" );          // Mule Kick
-    //streamer_add_perk_to_pool( "specialty_whoswho" );           // Who's Who
-    //streamer_add_perk_to_pool( "specialty_shades" );    // Electric Cherry
+    streamer_add_perk_to_pool( "specialty_finalstand" );        // Who's Who
 }
