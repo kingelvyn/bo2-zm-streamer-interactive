@@ -1,7 +1,8 @@
 #include scripts\zm\streamer_mod\streamer_debug;
 
-// POWERUPS (MAX AMMO / INSTA KILL / FIRE SALE....) ------------------------------
-
+// ---------------------------------------------------------------------------
+// POWERUPS
+// ---------------------------------------------------------------------------
 streamer_reward_powerup( player, powerupType )
 {
     if ( !isDefined ( player ) )
@@ -13,6 +14,7 @@ streamer_reward_powerup( player, powerupType )
         return false;
     }
 
+    // Positioning onto player
     forward = anglesToForward ( player.angles );
     org = player.origin + ( forward * 30 );
     org[2] = org[2] + 20;
@@ -23,8 +25,6 @@ streamer_reward_powerup( player, powerupType )
     trace = bulletTrace ( org, end, false, player );
     origin = trace["position"];
     origin[2] = origin[2] + 4;
-
-    streamer_debug_print ( "Power up rolled: " + powerupType );
 
     // Names: full_ammo (max ammo), insta_kill, fire_sale, double_points, nuke, carpenter, etc.
 
@@ -50,12 +50,13 @@ streamer_reward_powerup( player, powerupType )
             break;
 
         default:
-            streamer_debug_print ( "Power up rolled: " + powerupType );
+            streamer_debug_print ( "Power up failed" );
             return false;
     }
 
     if ( isDefined( powerup ) )
     {
+        player.ignore_range_powerup = powerup;
         return true;
     }
 

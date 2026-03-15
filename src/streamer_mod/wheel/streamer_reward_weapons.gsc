@@ -1,7 +1,8 @@
 #include scripts\zm\streamer_mod\streamer_debug;
 
-// RANDOM WEAPON -------------------------------------------------------------
-
+// ---------------------------------------------------------------------------
+// RANDOM WEAPON
+// ---------------------------------------------------------------------------
 streamer_reward_random_weapon( player, _ )
 {
     if ( !isDefined( player ) )
@@ -88,7 +89,9 @@ streamer_reward_random_weapon( player, _ )
     return false;
 }
 
+// ---------------------------------------------------------------------------
 // HELPER FUNCTIONS
+// ---------------------------------------------------------------------------
 streamer_count_reward_pool_weapons( player )
 {
     count = 0;

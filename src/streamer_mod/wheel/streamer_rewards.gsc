@@ -1,8 +1,8 @@
 #include scripts\zm\streamer_mod\streamer_debug;
-#include scripts\zm\streamer_mod\streamer_reward_points;
-#include scripts\zm\streamer_mod\streamer_reward_weapons;
-#include scripts\zm\streamer_mod\streamer_reward_perks;
-#include scripts\zm\streamer_mod\streamer_reward_powerups;
+#include scripts\zm\streamer_mod\wheel\streamer_reward_points;
+#include scripts\zm\streamer_mod\wheel\streamer_reward_weapons;
+#include scripts\zm\streamer_mod\wheel\streamer_reward_perks;
+#include scripts\zm\streamer_mod\wheel\streamer_reward_powerups;
 
 // ---------------------------------------------------------------------------
 // REWARD TABLE
@@ -16,22 +16,22 @@ streamer_setup_rewards()
     level.streamer_rewards = [];
 
     // Points rewards
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_small", "+1000 Points", "points",   1, 1000 );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_large", "+5000 Points", "points",   1, 5000 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_small", "+1000 Points", "points",   15, 1000 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "points_large", "+5000 Points", "points",   15, 5000 );
 
     // Random weapon (box-style)
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_weapon", "Random Weapon", "weapon", 1, 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_weapon", "Random Weapon", "weapon", 15, 0 );
 
     // Random perk
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_perk", "Random Perk", "perk",       1, 0 );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "random_perk", "Random Perk", "perk",       5, 0 );
 
     // Powerup-style rewards
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "max_ammo", "Max Ammo", "powerup",          40, "ammo" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "insta_kill", "Insta-Kill", "powerup",      40, "insta_kill" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "firesale", "🔥SALE", "powerup",            40, "fire_sale" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "nuke", "Nuke", "powerup",                  40, "nuke" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "carpenter", "Carpenter", "powerup",        40, "carpenter" );
-    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "double_points", "2X Points", "powerup",    40, "double_points" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "max_ammo", "Max Ammo", "powerup",          5, "ammo" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "insta_kill", "Insta-Kill", "powerup",      5, "insta_kill" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "firesale", "FIRESALE", "powerup",          5, "fire_sale" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "nuke", "Nuke", "powerup",                  5, "nuke" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "carpenter", "Carpenter", "powerup",        5, "carpenter" );
+    level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "double_points", "2X Points", "powerup",    5, "double_points" );
 
     // Receive all perks 
     level.streamer_rewards[level.streamer_rewards.size] = streamer_make_reward( "all_perks", "All Perks", "perk",           1, 0 );
@@ -129,15 +129,13 @@ streamer_apply_reward( player, reward )
             return streamer_reward_points( player, reward.data );
 
         case "weapon":
-            streamer_debug_print ("Weapon: " + reward.data);
             return streamer_reward_weapon_dispatch( player, reward );
 
         case "perk":
-            streamer_debug_print ("Perk: " + reward.data);
             return streamer_reward_perk_dispatch( player, reward );
 
         case "powerup":
-            //streamer_debug_print ("Powerup: " + reward.data);
+            streamer_debug_print ("Powerup: " + reward.data);
             return streamer_reward_powerup( player, reward.data );
 
         default:

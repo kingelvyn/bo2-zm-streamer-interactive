@@ -1,4 +1,4 @@
-#include scripts\zm\streamer_mod\streamer_rewards;
+#include scripts\zm\streamer_mod\wheel\streamer_rewards;
 
 // ---------------------------------------------------------------------------
 // TRIGGER HANDLER
@@ -53,9 +53,8 @@ streamer_bind_player_spin_commands()
             {
                 player.streamer_spin_bound = true;
 
-                // Bind the custom command "streamer_spin" to +actionslot 3.
-                // In-game you will bind F12 to "+actionslot 3" from the console.
-                player notifyOnPlayerCommand( "streamer_spin", "+actionslot 3" );
+                // Bind the custom command "streamer_spin" to +actionslot 1
+                player notifyOnPlayerCommand( "streamer_spin", "+actionslot 1" );
 
                 player thread streamer_player_spin_listener();
             }

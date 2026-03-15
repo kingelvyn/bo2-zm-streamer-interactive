@@ -1,6 +1,8 @@
 #include scripts\zm\streamer_mod\streamer_debug;
 
-// RANDOM PERK ---------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// RANDOM PERK
+// ---------------------------------------------------------------------------
 
 streamer_reward_random_perk( player, _ )
 {
@@ -21,13 +23,16 @@ streamer_reward_random_perk( player, _ )
     }
 
     if ( !availablePerks.size )
+    {
+        streamer_debug_print( "Failed: no available perks / max slot reached" );
         return false;
+    }
 
     idx = randomint( availablePerks.size );
     perkName = availablePerks[idx];
 
-    streamer_player_set_perk( player, perkName );
     streamer_debug_print( "Perk rolled: " + perkName );
+    streamer_player_set_perk( player, perkName );
 
     if ( streamer_wait_for_perk_apply( player, perkName, 0.25 ) )
     {
@@ -35,11 +40,13 @@ streamer_reward_random_perk( player, _ )
         return true;
     }
 
-    streamer_debug_print( "FAILED perk: " + perkName );
+    streamer_debug_print( "FAILED to apply perk: " + perkName );
     return false;
 }
 
-// RECEIVE ALL PERKS ------------------------------
+// ---------------------------------------------------------------------------
+// RECEIVE ALL PERKS
+// ---------------------------------------------------------------------------
 
 streamer_reward_all_perks( player, _ )
 {
@@ -54,17 +61,23 @@ streamer_reward_all_perks( player, _ )
         return false;
     }
 
+    streamer_debug_print( "reward_all_perks: pool size = " + level.streamer_perk_pool.size );
     for ( i = 0; i < level.streamer_perk_pool.size; i++ )
     {
         perkName = level.streamer_perk_pool[i];
 
+        streamer_debug_print( "Trying perk: " + perkName );
+
         if ( streamer_player_has_perk( player, perkName ) )
+        {
+            streamer_debug_print( "Already has perk: " + perkName );
             continue;
-
-        streamer_player_set_perk( player, perkName );
+        }
+        
         streamer_debug_print( "Perk received: " + perkName );
+        streamer_player_set_perk( player, perkName );
 
-        if ( streamer_wait_for_perk_apply( player, perkName, 0.25 ) )
+        if ( streamer_wait_for_perk_apply( player, perkName, 0.5 ) )
             grantedAny = true;
         else
             streamer_debug_print( "FAILED perk: " + perkName );
@@ -77,10 +90,7 @@ streamer_reward_all_perks( player, _ )
 
 streamer_player_has_perk( player, perkName )
 {
-    if ( player hasPerk( perkName ) )
-        return true;
-
-    return false;
+    return player hasPerk( perkName );
 }
 
 streamer_player_set_perk( player, perkName )

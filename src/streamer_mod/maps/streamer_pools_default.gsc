@@ -1,3 +1,9 @@
+#include scripts\zm\streamer_mod\maps\streamer_pools_common;
+
+// ---------------------------------------------------------------------------
+// DEFAULT POOLS
+// ---------------------------------------------------------------------------
+
 streamer_init_weapon_pool_default()
 {
     level.streamer_weapon_pool = [];
@@ -9,7 +15,7 @@ streamer_init_weapon_pool_default()
     level.streamer_weapon_pool[level.streamer_weapon_pool.size] = "870mcs_zm";       // Remington 870 MCS
     level.streamer_weapon_pool[level.streamer_weapon_pool.size] = "ak74u_zm";        // AK-74u
     level.streamer_weapon_pool[level.streamer_weapon_pool.size] = "m16_zm";          // M16A4
-    level.streamer_weapon_pool[level.streamer_weapon_pool.size] = "beretta93r_zm";   // B23R (bus)
+    level.streamer_weapon_pool[level.streamer_weapon_pool.size] = "beretta93r_zm";   // B23R 
 
     // Box weapons
     level.streamer_weapon_pool[level.streamer_weapon_pool.size] = "knife_ballistic_zm"; // Ballistic Knife
@@ -40,10 +46,12 @@ streamer_init_perk_pool_default()
     level.streamer_perk_pool = [];
 
     // Core BO2 zombies perks. This list is safe on most maps.
-    level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_armorvest";     // Juggernog
-    level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_quickrevive";   // Quick Revive
-    level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_fastreload";    // Speed Cola
-    level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_rof";           // Double Tap
-    level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_mulekick";     // Mule Kick
-    level.streamer_perk_pool[level.streamer_perk_pool.size] = "specialty_longersprint";  // Stamin-Up
+    streamer_add_perk_to_pool( "specialty_armorvest" );         // Juggernog
+    streamer_add_perk_to_pool( "specialty_quickrevive" );       // Quick Revive
+    streamer_add_perk_to_pool( "specialty_fastreload" );        // Speed Cola
+    streamer_add_perk_to_pool( "specialty_rof" );               // Double Tap
+    streamer_add_perk_to_pool( "specialty_longersprint" );      // Stamin-Up
+    streamer_add_perk_to_pool( "specialty_additionalprimaryweapon" );     // Mule Kick
+    streamer_add_perk_to_pool( "specialty_nomotionsensor" );    // Vulture aid
+    streamer_add_perk_to_pool( "specialty_phdflopper" );        // PHD Flopper
 }

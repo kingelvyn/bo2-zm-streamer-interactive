@@ -1,4 +1,4 @@
-#include scripts\zm\streamer_mod\streamer_pools_common;
+#include scripts\zm\streamer_mod\maps\streamer_pools_common;
 
 // ---------------------------------------------------------------------------
 // BURIED POOLS
@@ -33,6 +33,8 @@ streamer_init_weapon_pool_buried()
     streamer_add_weapon_to_pool( "judge_zm" );           // Executioner
     streamer_add_weapon_to_pool( "fnfal_zm" );           // FAL
     streamer_add_weapon_to_pool( "fiveseven_zm" );       // Five-seven
+    streamer_add_weapon_to_pool( "fivesevendw_zm" );     // Five-seven (?)
+    streamer_add_weapon_to_pool( "qcw05_zm" );           // Chicom
     streamer_add_weapon_to_pool( "galil_zm" );           // Galil
     streamer_add_weapon_to_pool( "hamr_zm" );            // HAMR
     streamer_add_weapon_to_pool( "kard_zm" );            // KAP-40
@@ -42,14 +44,13 @@ streamer_init_weapon_pool_buried()
     streamer_add_weapon_to_pool( "saiga12_zm" );         // S12
     streamer_add_weapon_to_pool( "saritch_zm" );         // SMR
     streamer_add_weapon_to_pool( "m32_zm" );             // War Machine
-
-    // Wonder weapons that still behave like weapon grants
     streamer_add_weapon_to_pool( "ray_gun_zm" );         // Ray Gun
     streamer_add_weapon_to_pool( "raygun_mark2_zm" );    // Ray Gun Mark II
     streamer_add_weapon_to_pool( "slowgun_zm" );         // Paralyzer
+    streamer_add_weapon_to_pool( "remington_new_model_army_upgraded_za" );            // Remington New Army
     //streamer_add_weapon_to_pool( "time_bomb_zm" );          // Time Bomb - need logic update
     //streamer_add_weapon_to_pool( "cymbal_monkey_zm" );      // Monkey Bombs - need logic update
-    //streamer_add_weapon_to_pool( "remingtonnewarmy_zm" );// Remington New Army - failed, need to verify
+    
 }
 
 streamer_init_perk_pool_buried()
@@ -60,8 +61,8 @@ streamer_init_perk_pool_buried()
     streamer_add_perk_to_pool( "specialty_quickrevive" );       // Quick Revive
     streamer_add_perk_to_pool( "specialty_fastreload" );        // Speed Cola
     streamer_add_perk_to_pool( "specialty_rof" );               // Double Tap
-    streamer_add_perk_to_pool( "specialty_longersprint" );          // Stamin-Up
-    streamer_add_perk_to_pool( "specialty_mulekick" );          // Mule Kick
+    streamer_add_perk_to_pool( "specialty_longersprint" );      // Stamin-Up
+    streamer_add_perk_to_pool( "specialty_additionalprimaryweapon" );          // Mule Kick
     streamer_add_perk_to_pool( "specialty_nomotionsensor" );    // Vulture aid
     streamer_add_perk_to_pool( "specialty_phdflopper" );        // PHD Flopper
 }

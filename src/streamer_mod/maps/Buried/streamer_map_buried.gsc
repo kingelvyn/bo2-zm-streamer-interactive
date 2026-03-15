@@ -1,5 +1,7 @@
-#include scripts\zm\streamer_mod\streamer_pools_buried;
+#include scripts\zm\streamer_mod\maps\Buried\streamer_pools_buried;
 #include scripts\zm\_zm_perk_vulture;
+
+// Map specific assets
 
 init_buried()
 {

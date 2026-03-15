@@ -1,13 +1,19 @@
+#include scripts\zm\streamer_mod\streamer_debug;
+
+// ---------------------------------------------------------------------------
+// POOL HELPERS
+// ---------------------------------------------------------------------------
+
 streamer_get_current_map()
 {
     map = getdvar("mapname");
 
     if ( isDefined( level.script ) )
     {
-        iprintln( "Map detected: " + map );
+        streamer_debug_print( "Map detected: " + map );
         return map;
     }
-    iprintln ( "Map detection FAILED!" );
+    streamer_debug_print ( "Map detection FAILED!" );
     return "";
 }
 
