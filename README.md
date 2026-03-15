@@ -1,9 +1,9 @@
 ## Streamer Mod V1 (BO2 Zombies – Plutonium) WIP
 
-Mod for streamers to make their BO2 zombies experience more "interactive". Ideally will be connected to common streaming platforms (Twitch, Youtube, etc.). Tested only on Solo play.
+Mod for streamers to make their BO2 zombies experience more "interactive". Ideally will be connected to common streaming platforms (Twitch, Youtube, etc.). Tested only on Solo play. Inspired by @jamesaff mod (it is not publicly available)
 
 ### WIP
-Basic functionality complete (mostly), but is not linked to any streaming platform at the moment.
+Basic functionality complete (mostly), searching for better alternatives to make this easily accessible.
 
 ### What this script does
 
@@ -19,8 +19,14 @@ Basic functionality complete (mostly), but is not linked to any streaming platfo
   - Reward notification text
   - Per-player cooldown
   - Invalid reward rerolls (e.g. already has perk/weapon, obtain fallback reward)
+- **Twitch Integration**:
+  - Uses [Streamer.bot](https://streamer.bot/) for live twitch events
+  - Currently uses a script to check how many spins are in queue, executes them 1 at a time
+
 
 ### File layout
 
-Clone this repo into your `t6/mods/` folder for simplest installation
+Clone this repo into your `t6/mods/` folder for simplest installation.
+
+
 
