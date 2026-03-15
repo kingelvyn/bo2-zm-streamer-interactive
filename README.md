@@ -1,4 +1,4 @@
-## Streamer Mod V1 (BO2 Zombies – Plutonium) WIP
+## Streamer Mod V0 (BO2 Zombies – Plutonium) WIP
 
 Mod for streamers to make their BO2 zombies experience more "interactive". Ideally will be connected to common streaming platforms (Twitch, Youtube, etc.). Tested only on Solo play. Inspired by @jamesaff mod (it is not publicly available)
 
