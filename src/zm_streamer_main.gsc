@@ -4,6 +4,7 @@
 #include scripts\zm\streamer_mod\streamer_debug;
 #include scripts\zm\streamer_mod\streamer_input;
 #include scripts\zm\streamer_mod\streamer_input_debug;
+#include scripts\zm\streamer_mod\streamer_input_external;
 #include scripts\zm\streamer_mod\maps\streamer_pools;
 #include scripts\zm\streamer_mod\wheel\streamer_rewards;
 
@@ -25,6 +26,7 @@ streamer_mod_init()
         streamer_init_pools();
         streamer_setup_rewards();
         streamer_setup_input();
+        streamer_setup_external_spin_input();
         streamer_reward_test_setup();
     }
 }

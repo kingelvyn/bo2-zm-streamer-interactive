@@ -74,7 +74,7 @@ streamer_do_spin()
         if ( success )
         {
             // Notification text
-            self iprintlnbold( "^2Reward: ^5" + reward.displayName );
+            self iprintlnbold( "^2Random Reward: ^5" + reward.displayName );
             self.streamer_spin_in_progress = false;
             return;
         }
