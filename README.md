@@ -3,7 +3,7 @@
 Mod for streamers to make their BO2 zombies experience more "interactive". Ideally will be connected to common streaming platforms (Twitch, Youtube, etc.). Tested only on Solo play.
 
 ###WIP
-Basic functionality complete, but is not linked to any streaming platform at the moment.
+Basic functionality complete (mostly), but is not linked to any streaming platform at the moment.
 
 ### What this script does
 
@@ -22,7 +22,5 @@ Basic functionality complete, but is not linked to any streaming platform at the
 
 ### File layout
 
-Place this folder in:
-
-- `t6/scripts/zm/` You can locate where you should put it through plutonium docs
+Clone this repo into your `t6/mods/` folder for simplest installation
 
