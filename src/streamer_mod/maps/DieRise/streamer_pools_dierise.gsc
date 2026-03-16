@@ -45,10 +45,12 @@ streamer_init_weapon_pool_die_rise()
     streamer_add_weapon_to_pool( "hamr_zm" );
     streamer_add_weapon_to_pool( "usrpg_zm" );
     streamer_add_weapon_to_pool( "m32_zm" );
-    //streamer_add_weapon_to_pool( "cymbal_monkey_zm" );
-    streamer_add_weapon_to_pool( "ray_gun_zm" );
     streamer_add_weapon_to_pool( "knife_ballistic_zm" );
+
+    // Wonder / special
+    streamer_add_weapon_to_pool( "ray_gun_zm" );
     streamer_add_weapon_to_pool( "raygun_mark2_zm" );
+    streamer_add_weapon_to_pool( "sliqifier_zm" );
 }
 
 streamer_init_perk_pool_die_rise()

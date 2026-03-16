@@ -23,7 +23,9 @@ streamer_init_weapon_pool_mob()
     // -----------------------------------------------------------------------
     // Mystery Box weapons
     // -----------------------------------------------------------------------
+    streamer_add_weapon_to_pool( "m1911_zm" );
     streamer_add_weapon_to_pool( "judge_zm" );
+    streamer_add_weapon_to_pool( "fiveseven_zm" );
     streamer_add_weapon_to_pool( "fivesevendw_zm" );
     streamer_add_weapon_to_pool( "pdw57_zm" );
     streamer_add_weapon_to_pool( "saiga12_zm" );
@@ -37,9 +39,10 @@ streamer_init_weapon_pool_mob()
     streamer_add_weapon_to_pool( "lsat_zm" );
     streamer_add_weapon_to_pool( "usrpg_zm" );
     streamer_add_weapon_to_pool( "ray_gun_zm" );
+    streamer_add_weapon_to_pool( "raygun_mark2_zm" );
     streamer_add_weapon_to_pool( "blundergat_zm" );
     streamer_add_weapon_to_pool( "blundersplat_zm" );
-    streamer_add_weapon_to_pool( "raygun_mark2_zm" );
+    //streamer_add_weapon_to_pool( "cymbal_monkey_zm" );            // Grenades need special atention
 }
 
 streamer_init_perk_pool_mob()
