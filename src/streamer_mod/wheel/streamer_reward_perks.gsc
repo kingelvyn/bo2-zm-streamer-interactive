@@ -1,4 +1,5 @@
 #include scripts\zm\streamer_mod\streamer_debug;
+#include maps\mp\zombies\_zm_perks;
 
 // ---------------------------------------------------------------------------
 // RANDOM PERK
@@ -62,6 +63,7 @@ streamer_reward_all_perks( player, _ )
     }
 
     streamer_debug_print( "reward_all_perks: pool size = " + level.streamer_perk_pool.size );
+
     for ( i = 0; i < level.streamer_perk_pool.size; i++ )
     {
         perkName = level.streamer_perk_pool[i];
@@ -77,7 +79,7 @@ streamer_reward_all_perks( player, _ )
         streamer_debug_print( "Perk received: " + perkName );
         streamer_player_set_perk( player, perkName );
 
-        if ( streamer_wait_for_perk_apply( player, perkName, 0.5 ) )
+        if ( streamer_wait_for_perk_apply( player, perkName, 0.25 ) )
             grantedAny = true;
         else
             streamer_debug_print( "FAILED perk: " + perkName );

@@ -49,7 +49,6 @@ streamer_init_perk_pool_mob()
     streamer_add_perk_to_pool( "specialty_armorvest" );             // Juggernog
     streamer_add_perk_to_pool( "specialty_fastreload" );            // Speed Cola
     streamer_add_perk_to_pool( "specialty_rof" );                   // Double Tap II
-    streamer_add_perk_to_pool( "specialty_quickrevive" );           // Quick Revive
-    streamer_add_perk_to_pool( "specialty_ads_zombies" );           // Deadshot Daiquiri
     streamer_add_perk_to_pool( "specialty_grenadepulldeath" );      // Electric Cherry
+    streamer_add_perk_to_pool( "specialty_ads_zombies" );           // Deadshot Daquiri
 }

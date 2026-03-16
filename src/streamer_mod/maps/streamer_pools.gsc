@@ -6,6 +6,8 @@
 #include scripts\zm\streamer_mod\maps\DieRise\streamer_pools_dierise;
 #include scripts\zm\streamer_mod\maps\Nuketown\streamer_pools_nuketown;
 #include scripts\zm\streamer_mod\maps\Mob\streamer_pools_mob;
+#include scripts\zm\streamer_mod\streamer_debug;
+
 
 // ---------------------------------------------------------------------------
 // POOL SETUP
@@ -43,6 +45,7 @@ streamer_init_pools()
             break;
 
         default:
+            streamer_debug_print ("Default pools init");
             streamer_init_weapon_pool_default();
             streamer_init_perk_pool_default();
             break;

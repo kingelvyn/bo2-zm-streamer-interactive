@@ -2,7 +2,7 @@
 
 // ---------------------------------------------------------------------------
 // NUKETOWN POOLS - incomplete
-// Map codename: zm_prison
+// Map codename: zm_nuketown
 // ---------------------------------------------------------------------------
 
 streamer_init_weapon_pool_mob()
@@ -20,7 +20,6 @@ streamer_init_weapon_pool_mob()
     streamer_add_weapon_to_pool( "870mcs_zm" );
     streamer_add_weapon_to_pool( "m14_zm" );
     streamer_add_weapon_to_pool( "blundersplat_zm" );
-    streamer_add_weapon_to_pool( "bouncing_tomahawk_zm" );
 
     // -----------------------------------------------------------------------
     // Mystery Box weapons
@@ -43,7 +42,7 @@ streamer_init_weapon_pool_mob()
     streamer_add_weapon_to_pool( "raygun_mark2_zm" );
 }
 
-streamer_init_perk_pool_mob()
+streamer_init_perk_pool_nuketown()
 {
     level.streamer_perk_pool = [];
 
