@@ -12,8 +12,8 @@ init_mob()
     streamer_init_weapon_pool_mob();
     streamer_init_perk_pool_mob();
 
-    level.zombiemode_using_electric_cherry_perk = 1;
     level.zombiemode_using_deadshot_perk = 1;
+    level.zombiemode_using_electric_cherry_perk = 1;
 
     init_mob_perks();
 }
