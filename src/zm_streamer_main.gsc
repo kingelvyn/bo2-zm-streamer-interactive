@@ -8,6 +8,12 @@
 #include scripts\zm\streamer_mod\maps\streamer_pools;
 #include scripts\zm\streamer_mod\wheel\streamer_rewards;
 
+main()
+{
+    // Called by the game engine before init()
+    // Nothing needed here for now, but it must exist
+}
+
 init()
 {
     level thread streamer_mod_init();

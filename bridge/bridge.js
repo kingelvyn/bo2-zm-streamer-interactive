@@ -1,8 +1,12 @@
 const { StreamerbotClient } = require('@streamerbot/client');
 const fs = require('fs');
 const path = require('path');
+const { spawn } = require('child_process');
 
-const QUEUE_FILE = path.join(__dirname, 'wheel_queue.json');
+const QUEUE_FILE = path.join(
+  process.env.LOCALAPPDATA,
+  'Plutonium', 'storage', 't6', 'wheel_queue.json'
+);
 const PENDING_FILE = path.join(__dirname, 'pending_spins.txt');
 
 let queue = [];
@@ -19,17 +23,17 @@ function loadQueue() {
 }
 
 function saveQueue() {
-  fs.writeFileSync(QUEUE_FILE, JSON.stringify(queue, null, 2));
+  const tmp = QUEUE_FILE + '.tmp';
+  fs.writeFileSync(tmp, JSON.stringify(queue, null, 2));
+  fs.renameSync(tmp, QUEUE_FILE);
   updatePendingFile();
 }
 
 function updatePendingFile() {
   let total = 0;
-
   for (const item of queue) {
     total += item.count || 1;
   }
-
   fs.writeFileSync(PENDING_FILE, String(total));
 }
 
@@ -38,15 +42,16 @@ function getUserFromData(data) {
 }
 
 function addSpin(eventType, user, count = 1, amount = 0) {
-  queue.push({
-    cmd: 'spin',
-    count,
-    event: eventType,
-    user,
-    amount,
-    ts: Date.now()
-  });
-
+  for (let i = 0; i < count; i++) {
+    queue.push({
+      cmd: 'spin',
+      count: 1,
+      event: eventType,
+      user,
+      amount,
+      ts: Date.now()
+    });
+  }
   saveQueue();
   console.log(`[QUEUE] ${eventType} | ${user} | spins=${count} | amount=${amount}`);
 }
@@ -96,5 +101,11 @@ client.on('Twitch.Cheer', ({ data }) => {
   addSpin('cheer', user, spins, bits);
 });
 
+console.log('Listening on Streamer.bot...');
+// Start consume_queue.js automatically alongside bridge.js
+const consumer = spawn('node', [path.join(__dirname, 'consume_queue.js')], {
+  stdio: 'inherit'
+});
+consumer.on('exit', (code) => console.log(`[CONSUMER] exited with code ${code}`));
+
 console.log('Streamer.bot bridge started...');
-saveQueue();

@@ -23,7 +23,7 @@ streamer_bind_reward_test_commands()
 
             if ( !isDefined( player.streamer_reward_test_bound ) )
             {
-                player.streamer_reward_test_bound = true;
+                player.streamer_reward_test_bound = false;
 
                 // Main binds
                 player notifyOnPlayerCommand( "test_random_weapon", "+actionslot 2" );
@@ -35,7 +35,6 @@ streamer_bind_reward_test_commands()
                 player thread streamer_reward_test_listener_all_perks();
 
                 player iprintlnbold( "^2Streamer reward test binds enabled" );
-                player iprintlnbold( "^5Slot1: Weapon  Slot2: Random Perk  Slot3: All Perks" );
             }
         }
 
