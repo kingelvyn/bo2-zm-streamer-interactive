@@ -55,13 +55,3 @@ CLIENT_SECRET=
 BROADCASTER_USERNAME=
 RCON_PASSWORD=
 ```
-```
-
-Also create a `bridge/.env.example` file with empty values so other users know what's needed without exposing your secrets:
-```
-CLIENT_ID=
-CLIENT_SECRET=
-BROADCASTER_USERNAME=
-RCON_PASSWORD=
-ACCESS_TOKEN=
-REFRESH_TOKEN=
