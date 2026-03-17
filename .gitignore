@@ -72,6 +72,6 @@ tools/
 # Twitch Tokens
 # -----------------------------------------------------------------------------
 bridge/tokens.json
-bridge/get_tokens.js
+bridge/get_token.js
 bridge/_keypress.ps1
 bridge/.env
