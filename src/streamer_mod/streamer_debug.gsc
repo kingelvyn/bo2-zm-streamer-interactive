@@ -1,3 +1,5 @@
+// Format for debugging messages
+
 streamer_debug_print( msg )
 {
     if ( isDefined( level.streamer_debug ) && level.streamer_debug )

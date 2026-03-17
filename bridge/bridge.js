@@ -1,3 +1,5 @@
+// Bridges .gsc files and Twitch events, run with consume_queue.js (node bridge.js)
+
 require('dotenv').config();
 
 const fs = require('fs');

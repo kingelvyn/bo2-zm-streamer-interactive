@@ -1,3 +1,5 @@
+// Takes queue and sends to game, should be ran along with bridge.js (node consume_queue.js)
+
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');

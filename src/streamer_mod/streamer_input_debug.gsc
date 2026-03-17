@@ -3,7 +3,7 @@
 #include scripts\zm\streamer_mod\wheel\streamer_reward_perks;
 
 // ---------------------------------------------------------------------------
-// STREAMER REWARD TEST BINDS
+// STREAMER REWARD TEST BINDS - for testing purposes
 // ---------------------------------------------------------------------------
 
 streamer_reward_test_setup()
@@ -23,7 +23,7 @@ streamer_bind_reward_test_commands()
 
             if ( !isDefined( player.streamer_reward_test_bound ) )
             {
-                player.streamer_reward_test_bound = false;
+                player.streamer_reward_test_bound = false;          // Set to false if not needed
 
                 // Main binds
                 player notifyOnPlayerCommand( "test_random_weapon", "+actionslot 2" );
