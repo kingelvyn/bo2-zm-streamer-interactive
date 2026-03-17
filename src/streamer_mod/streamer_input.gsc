@@ -75,8 +75,7 @@ streamer_player_spin_listener()
         if ( !streamer_can_spin( self ) )
         {
             remaining = int( ( self.streamer_next_spin_time - gettime() ) / 1000 );
-            if ( remaining < 0 )
-                remaining = 0;
+            if ( remaining < 0 ) remaining = 0;
             self iprintlnbold( "Spin cooling down (" + remaining + "s)" );
             continue;
         }
