@@ -8,6 +8,12 @@
 #include scripts\zm\streamer_mod\maps\streamer_pools;
 #include scripts\zm\streamer_mod\wheel\streamer_rewards;
 
+main()
+{
+    // Called by the game engine before init()
+    // Nothing needed here for now, but it must exist
+}
+
 init()
 {
     level thread streamer_mod_init();
@@ -18,7 +24,7 @@ streamer_mod_init()
     if ( !isDefined( level.streamer_mod_initialized ) )
     {
         level.streamer_debug = true;            // Debugging purposes, TRUE = display logs, FALSE = hide logs
-        level.streamer_reward_test_enabled = true;  
+        level.streamer_reward_test_enabled = false;  
         level.streamer_mod_initialized = true;
         level.streamer_spin_cooldown_ms = 1000; // 1s per-player cooldown (tweak)
         level thread streamer_mod_debug_announce();
@@ -27,7 +33,7 @@ streamer_mod_init()
         streamer_setup_rewards();
         streamer_setup_input();
         streamer_setup_external_spin_input();
-        streamer_reward_test_setup();
+        //streamer_reward_test_setup();
     }
 }
 

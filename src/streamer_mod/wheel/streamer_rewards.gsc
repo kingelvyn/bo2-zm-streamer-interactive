@@ -62,7 +62,7 @@ streamer_do_spin()
 
     // Set cooldown (even with no loop we keep a per-player delay)
     if ( !isDefined( level.streamer_spin_cooldown_ms ) )
-        level.streamer_spin_cooldown_ms = 2000; // 2s default cooldown
+        level.streamer_spin_cooldown_ms = 3000; // 2s default cooldown
 
     self.streamer_next_spin_time = gettime() + level.streamer_spin_cooldown_ms;
 

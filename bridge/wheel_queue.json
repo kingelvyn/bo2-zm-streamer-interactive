@@ -1,18 +1,1 @@
-[
-  {
-    "cmd": "spin",
-    "count": 1,
-    "event": "follow",
-    "user": "elyvnbackup",
-    "amount": 0,
-    "ts": 1773603730283
-  },
-  {
-    "cmd": "spin",
-    "count": 1,
-    "event": "follow",
-    "user": "elyvnbackup",
-    "amount": 0,
-    "ts": 1773603963662
-  }
-]
+[]
