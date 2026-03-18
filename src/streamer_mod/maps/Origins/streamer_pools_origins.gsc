@@ -45,7 +45,7 @@ streamer_init_weapon_pool_origins()
     streamer_add_weapon_to_pool( "m32_zm" );
     streamer_add_weapon_to_pool( "ray_gun_zm" );
     streamer_add_weapon_to_pool( "raygun_mark2_zm" );
-    streamer_add_weapon_to_pool( "gstrike_zm" );
+    //streamer_add_weapon_to_pool( "gstrike_zm" );
     streamer_add_weapon_to_pool( "staff_fire_zm" );
     streamer_add_weapon_to_pool( "staff_ice_zm" );
     streamer_add_weapon_to_pool( "staff_lightning_zm" );

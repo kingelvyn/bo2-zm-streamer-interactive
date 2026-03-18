@@ -89,6 +89,92 @@ streamer_reward_random_weapon( player, _ )
     return false;
 }
 
+// GIVING SPECIFIC WEAPONS
+streamer_reward_specific_weapon( player, weapName )
+{
+    allWeapons = player getWeaponsList();
+    for ( i = 0; i < allWeapons.size; i++ )
+        streamer_debug_print( "Slot " + i + ": " + allWeapons[i] );
+    streamer_debug_print( "Total slots: " + allWeapons.size );
+    if ( !isDefined( player ) || !isDefined( weapName ) )
+        return false;
+
+    if ( player hasWeapon( weapName ) )
+    {
+        player switchToWeapon( weapName );
+        return true;
+    }
+
+    // Get total weapon count including pistol and wall weapons
+    allWeapons = player getWeaponsList();
+    if ( !isDefined( allWeapons ) )
+        allWeapons = [];
+
+    streamer_debug_print( "Total weapons: " + allWeapons.size );
+
+    // Max slots without Mule Kick is 2
+    maxSlots = 2;
+    if ( player hasPerk( "specialty_additionalprimaryweapon" ) )
+        maxSlots = 3;
+
+    if ( allWeapons.size < maxSlots )
+    {
+        // Has room - give directly
+        streamer_debug_print( "Has room, giving directly: " + weapName );
+        player giveWeapon( weapName );
+        wait 0.05;
+        if ( player hasWeapon( weapName ) )
+        {
+            player switchToWeapon( weapName );
+            return true;
+        }
+        return false;
+    }
+
+    // At limit - must take something first
+    // Prefer to take a tracked pool weapon, otherwise take current weapon
+    weapToReplace = undefined;
+    for ( i = 0; i < level.streamer_weapon_pool.size; i++ )
+    {
+        if ( player hasWeapon( level.streamer_weapon_pool[i] ) )
+        {
+            weapToReplace = level.streamer_weapon_pool[i];
+            break;
+        }
+    }
+
+    // Fallback: take current weapon if no pool weapon found
+    if ( !isDefined( weapToReplace ) )
+        weapToReplace = player getCurrentWeapon();
+
+    if ( !isDefined( weapToReplace ) || weapToReplace == "" )
+        return false;
+
+    streamer_debug_print( "At limit, replacing: " + weapToReplace );
+    player switchToWeapon( weapToReplace );
+    wait 0.1;
+    player takeWeapon( weapToReplace );
+    wait 0.1;
+
+    player giveWeapon( weapName );
+    wait 0.05;
+
+    if ( player hasWeapon( weapName ) )
+    {
+        player switchToWeapon( weapName );
+        streamer_debug_print( "Specific weapon swap SUCCESS" );
+        return true;
+    }
+
+    // Rollback
+    player giveWeapon( weapToReplace );
+    wait 0.05;
+    if ( player hasWeapon( weapToReplace ) )
+        player switchToWeapon( weapToReplace );
+
+    return false;
+}
+
 // ---------------------------------------------------------------------------
 // HELPER FUNCTIONS
 // ---------------------------------------------------------------------------
@@ -121,6 +207,8 @@ streamer_reward_weapon_dispatch( player, reward )
         case "random_weapon":
             return streamer_reward_random_weapon( player, reward.data );
 
+        case "raygun_mk2":
+            return streamer_reward_specific_weapon( player, reward.data );
         default:
             return false;
     }

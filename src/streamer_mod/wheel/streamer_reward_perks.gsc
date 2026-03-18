@@ -120,6 +120,36 @@ streamer_wait_for_perk_apply( player, perkName, timeout )
     return false;
 }
 
+streamer_remove_random_perks( player, _ )
+{
+    if ( !isDefined( player ) )
+        return false;
+
+    if ( !isDefined( level.streamer_perk_pool ) || !level.streamer_perk_pool.size )
+        return false;
+
+    hadAny = false;
+    loseRandomPerk = GetFunction( "maps/mp/zombies/_zm_perks", "lose_random_perk" );
+
+    if ( !isDefined( loseRandomPerk ) )
+    {
+        streamer_debug_print( "lose_random_perk not found" );
+        return false;
+    }
+
+    for ( i = 0; i < level.streamer_perk_pool.size; i++ )
+    {
+        perkName = level.streamer_perk_pool[i];
+        if ( streamer_player_has_perk( player, perkName ) )
+        {
+            player [[ loseRandomPerk ]]();
+            hadAny = true;
+        }
+    }
+
+    return hadAny;
+}
+
 streamer_reward_perk_dispatch( player, reward )
 {
     if ( !isDefined( reward ) )
@@ -132,6 +162,9 @@ streamer_reward_perk_dispatch( player, reward )
 
         case "all_perks":
             return streamer_reward_all_perks( player, reward.data );
+
+        case "remove_perk":
+            return streamer_remove_random_perks ( player, reward.data );
 
         default:
             return false;
